@@ -58,7 +58,6 @@ void Graph<E>::ReadGraph()
 		uint max = 0;
 		string line;
 		uint edgeCounter = 0;
-		cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" << endl;
 		if(isWeighted)
 		{
 			vector<EdgeWeighted> edges;
@@ -81,6 +80,7 @@ void Graph<E>::ReadGraph()
 				if(max < newEdge.end)
 					max = newEdge.end;				
 			}
+			cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" << endl;
 			infile.close();
 			num_nodes = max + 1;
 			num_edges = edgeCounter;
@@ -93,6 +93,7 @@ void Graph<E>::ReadGraph()
 				degree[edges[i].source]++;
 			
 			uint counter=0;
+			cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" << endl;
 			for(uint i=0; i<num_nodes; i++)
 			{
 				nodePointer[i] = counter;
@@ -101,6 +102,7 @@ void Graph<E>::ReadGraph()
 			nodePointer[num_nodes] = num_edges;
 			uint *outDegreeCounter  = new uint[num_nodes];
 			uint location;  
+			cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" << endl;
 			for(uint i=0; i<num_edges; i++)
 			{
 				location = nodePointer[edges[i].source] + outDegreeCounter[edges[i].source];
