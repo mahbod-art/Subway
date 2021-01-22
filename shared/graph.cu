@@ -105,9 +105,9 @@ void Graph<E>::ReadGraph()
 			{
 				location = nodePointer[edges[i].source] + outDegreeCounter[edges[i].source];
 				edgeList[location].end = edges[i].end;
-				cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" << endl;			
 				if(isWeighted)
 					AssignW8(edges[i].w8, location);
+					cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" << endl;			
 					//edgeList[location].w8 = edges[i].w8;
 				outDegreeCounter[edges[i].source]++;  
 			}
