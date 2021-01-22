@@ -179,7 +179,7 @@ void Graph<E>::ReadGraph()
 	for(uint i=1; i<num_nodes-1; i++)
 		outDegree[i-1] = nodePointer[i] - nodePointer[i-1];
 	outDegree[num_nodes-1] = num_edges - nodePointer[num_nodes-1];
-	
+	cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" << endl;
 	label1 = new bool[num_nodes];
 	label2 = new bool[num_nodes];
 	value  = new unsigned int[num_nodes];

@@ -18,9 +18,8 @@ int main(int argc, char** argv)
 	
 	Timer timer;
 	timer.Start();
-	cout << "start" << endl;
+	
 	Graph<OutEdgeWeighted> graph(arguments.input, true);
-	cout << "end" << endl;
 	graph.ReadGraph();
 	
 	float readtime = timer.Finish();
