@@ -109,12 +109,11 @@ void Graph<E>::ReadGraph()
 					//edgeList[location].w8 = edges[i].w8;
 				outDegreeCounter[edges[i].source]++;  
 			}
+			cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" << endl;			
 			edges.clear();
 			delete[] degree;
 			delete[] outDegreeCounter;
-			cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" << endl;
-
-			
+			cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" << endl;			
 		}
 		else
 		{
@@ -137,7 +136,6 @@ void Graph<E>::ReadGraph()
 				if(max < newEdge.end)
 					max = newEdge.end;				
 			}
-			cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" << endl;
 			infile.close();
 			num_nodes = max + 1;
 			num_edges = edgeCounter;
@@ -158,8 +156,6 @@ void Graph<E>::ReadGraph()
 			nodePointer[num_nodes] = num_edges;
 			uint *outDegreeCounter  = new uint[num_nodes];
 			uint location;  
-			cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" << endl;
-
 			for(uint i=0; i<num_edges; i++)
 			{
 				location = nodePointer[edges[i].source] + outDegreeCounter[edges[i].source];
@@ -170,9 +166,7 @@ void Graph<E>::ReadGraph()
 			}
 			edges.clear();
 			delete[] degree;
-			delete[] outDegreeCounter;
-			cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" << endl;
-						
+			delete[] outDegreeCounter;						
 		}
 	}
 	else
