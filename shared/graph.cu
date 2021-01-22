@@ -58,6 +58,7 @@ void Graph<E>::ReadGraph()
 		uint max = 0;
 		string line;
 		uint edgeCounter = 0;
+		cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" << endl;
 		if(isWeighted)
 		{
 			vector<EdgeWeighted> edges;
@@ -173,8 +174,6 @@ void Graph<E>::ReadGraph()
 		cout << "The graph format is not supported!\n";
 		exit(-1);
 	}
-	cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" << endl;
-
 	
 	outDegree  = new unsigned int[num_nodes];
 	
