@@ -19,7 +19,9 @@ int main(int argc, char** argv)
 	Timer timer;
 	timer.Start();
 	
-	Graph<OutEdgeWeighted> graph(arguments.input, false);
+	//Graph<OutEdgeWeighted> graph(arguments.input, true);
+	Graph<OutEdge> graph(arguments.input, false);
+
 	graph.ReadGraph();
 	
 	float readtime = timer.Finish();
