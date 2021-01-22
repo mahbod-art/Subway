@@ -12,15 +12,16 @@
 
 int main(int argc, char** argv)
 {
+	cout << "start" << endl;
+	cout << "end" << endl;
 	cudaFree(0);
 
 	ArgumentParser arguments(argc, argv, true, false);
 	
 	Timer timer;
 	timer.Start();
-	cout << "start" << endl;
+
 	Graph<OutEdgeWeighted> graph(arguments.input, true);
-	cout << "end" << endl;
 	graph.ReadGraph();
 	
 	float readtime = timer.Finish();
