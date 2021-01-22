@@ -104,10 +104,10 @@ void Graph<E>::ReadGraph()
 			{
 				location = nodePointer[edges[i].source] + outDegreeCounter[edges[i].source];
 				edgeList[location].end = edges[i].end;
-				//if(isWeighted)
-					//AssignW8 (edges[i].w8, location);
+				if(isWeighted)
+					AssignW8 (edges[i].w8, location);
 					//edgeList[location].w8 = edges[i].w8;
-				outDegreeCounter[edges[i].source]++;  
+				//outDegreeCounter[edges[i].source]++;  
 			}
 			edges.clear();
 			delete[] degree;
