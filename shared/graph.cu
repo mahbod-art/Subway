@@ -99,7 +99,8 @@ void Graph<E>::ReadGraph()
 			}
 			nodePointer[num_nodes] = num_edges;
 			uint *outDegreeCounter  = new uint[num_nodes];
-			uint location;  
+			uint location; 
+			cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" << endl;			 
 			for(uint i=0; i<num_edges; i++)
 			{
 				location = nodePointer[edges[i].source] + outDegreeCounter[edges[i].source];
@@ -113,7 +114,6 @@ void Graph<E>::ReadGraph()
 			edges.clear();
 			delete[] degree;
 			delete[] outDegreeCounter;
-			cout << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" << endl;			
 		}
 		else
 		{
