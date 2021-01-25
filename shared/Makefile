@@ -1,7 +1,7 @@
 CC=g++
 NC=nvcc
 CFLAGS=-std=c++11 -O3
-NFLAGS=-arch=sm_30
+NFLAGS=-arch=sm_37
 
 
 all: timer.o argument_parsing.o graph.o subgraph.o partitioner.o subgraph_generator.o gpu_kernels.o subway_utilities.o test.o
