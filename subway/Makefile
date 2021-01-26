@@ -6,7 +6,7 @@ NFLAGS=-arch=sm_37
 
 SHARED=../shared
 
-all: bfs-sync.o cc-sync.o sssp-sync.o ssnp-sync.o sswp-sync.o bfs-async.o cc-async.o sssp-async.o ssnp-async.o sswp-async.o
+all: bfs-sync.o cc-sync.o sssp-sync.o ssnp-sync.o sswp-sync.o viterbi-sync.o bfs-async.o cc-async.o sssp-async.o ssnp-async.o sswp-async.o viterbi-async.o
 
 
 bfs-sync.o: bfs-sync.cu
@@ -23,6 +23,9 @@ ssnp-sync.o: sssp-sync.cu
 
 sswp-sync.o: sswp-sync.cu
 	$(NC) -c sswp-sync.cu $(CFLAGS) $(NFLAGS)
+
+viterbi-sync.o: viterbi-sync.cu
+	$(NC) -c viterbi-sync.cu $(CFLAGS) $(NFLAGS)
 	
 bfs-async.o: bfs-async.cu
 	$(NC) -c bfs-async.cu $(CFLAGS) $(NFLAGS)		
@@ -38,6 +41,9 @@ ssnp-async.o: sssp-async.cu
 
 sswp-async.o: sswp-async.cu
 	$(NC) -c sswp-async.cu $(CFLAGS) $(NFLAGS)	
+
+viterbi-async.o: viterbi-async.cu
+	$(NC) -c viterbi-async.cu $(CFLAGS) $(NFLAGS)	
 			
 clean:
 	rm  *.o 
