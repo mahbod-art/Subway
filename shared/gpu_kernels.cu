@@ -360,7 +360,7 @@ __global__ void sssp_async(unsigned int numNodes,
 	}
 }
 
-__global__ void sssp_async(unsigned int numNodes,
+__global__ void ssnp_async(unsigned int numNodes,
 							unsigned int from,
 							unsigned int numPartitionedEdges,
 							unsigned int *activeNodes,
