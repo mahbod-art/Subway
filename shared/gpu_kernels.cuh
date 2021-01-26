@@ -39,6 +39,18 @@ __global__ void sssp_kernel(unsigned int numNodes,
 							//bool *finished,
 							bool *label1,
 							bool *label2);
+
+__global__ void ssnp_kernel(unsigned int numNodes,
+							unsigned int from,
+							unsigned int numPartitionedEdges,
+							unsigned int *activeNodes,
+							unsigned int *activeNodesPointer,
+							OutEdgeWeighted *edgeList,
+							unsigned int *outDegree,
+							unsigned int *dist,
+							//bool *finished,
+							bool *label1,
+							bool *label2);
 							
 __global__ void sswp_kernel(unsigned int numNodes,
 							unsigned int from,
@@ -65,6 +77,18 @@ __global__ void bfs_async(unsigned int numNodes,
 							bool *label2);	
 							
 __global__ void sssp_async(unsigned int numNodes,
+							unsigned int from,
+							unsigned int numPartitionedEdges,
+							unsigned int *activeNodes,
+							unsigned int *activeNodesPointer,
+							OutEdgeWeighted *edgeList,
+							unsigned int *outDegree,
+							unsigned int *dist,
+							bool *finished,
+							bool *label1,
+							bool *label2);
+
+__global__ void ssnp_async(unsigned int numNodes,
 							unsigned int from,
 							unsigned int numPartitionedEdges,
 							unsigned int *activeNodes,

@@ -158,6 +158,56 @@ __global__ void sssp_kernel(unsigned int numNodes,
 	}
 }
 
+__global__ void ssnp_kernel(unsigned int numNodes,
+							unsigned int from,
+							unsigned int numPartitionedEdges,
+							unsigned int *activeNodes,
+							unsigned int *activeNodesPointer,
+							OutEdgeWeighted *edgeList,
+							unsigned int *outDegree,
+							unsigned int *dist,
+							//bool *finished,
+							bool *label1,
+							bool *label2)
+{
+	unsigned int tId = blockDim.x * blockIdx.x + threadIdx.x;
+
+	if(tId < numNodes)
+	{
+		unsigned int id = activeNodes[from + tId];
+		
+		if(label1[id] == false)
+			return;
+			
+		label1[id] = false;
+
+		unsigned int sourceWeight = dist[id];
+
+		unsigned int thisFrom = activeNodesPointer[from+tId]-numPartitionedEdges;
+		unsigned int degree = outDegree[id];
+		unsigned int thisTo = thisFrom + degree;
+		
+		//printf("******* %i\n", thisFrom);
+		
+		unsigned int finalDist;
+		
+		for(unsigned int i=thisFrom; i<thisTo; i++)
+		{	
+			finalDist = max(sourceWeight, edgeList[i].w8);
+			if(finalDist < dist[edgeList[i].end])
+			{
+				atomicMin(&dist[edgeList[i].end] , finalDist);
+
+				//*finished = false;
+				
+				//label1[edgeList[i].end] = true;
+
+				label2[edgeList[i].end] = true;
+			}
+		}
+	}
+}
+
 __global__ void sswp_kernel(unsigned int numNodes,
 							unsigned int from,
 							unsigned int numPartitionedEdges,
@@ -309,6 +359,57 @@ __global__ void sssp_async(unsigned int numNodes,
 		}
 	}
 }
+
+__global__ void sssp_async(unsigned int numNodes,
+							unsigned int from,
+							unsigned int numPartitionedEdges,
+							unsigned int *activeNodes,
+							unsigned int *activeNodesPointer,
+							OutEdgeWeighted *edgeList,
+							unsigned int *outDegree,
+							unsigned int *dist,
+							bool *finished,
+							bool *label1,
+							bool *label2)
+{
+	unsigned int tId = blockDim.x * blockIdx.x + threadIdx.x;
+
+	if(tId < numNodes)
+	{
+		unsigned int id = activeNodes[from + tId];
+		
+		if(label1[id] == false)
+			return;
+			
+		label1[id] = false;
+		
+		unsigned int sourceWeight = dist[id];
+
+		unsigned int thisFrom = activeNodesPointer[from+tId]-numPartitionedEdges;
+		unsigned int degree = outDegree[id];
+		unsigned int thisTo = thisFrom + degree;
+		
+		//printf("******* %i\n", thisFrom);
+		
+		unsigned int finalDist;
+		
+		for(unsigned int i=thisFrom; i<thisTo; i++)
+		{	
+			finalDist = min(sourceWeight, edgeList[i].w8);
+			if(finalDist < dist[edgeList[i].end])
+			{
+				atomicMin(&dist[edgeList[i].end] , finalDist);
+
+				*finished = false;
+				
+				//label1[edgeList[i].end] = true;
+
+				label2[edgeList[i].end] = true;
+			}
+		}
+	}
+}
+
 
 __global__ void sswp_async(unsigned int numNodes,
 							unsigned int from,

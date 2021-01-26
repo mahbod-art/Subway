@@ -11,7 +11,7 @@ TOOLS=tools
 
 DEP=$(SHARED)/timer.o $(SHARED)/argument_parsing.o $(SHARED)/graph.o $(SHARED)/subgraph.o $(SHARED)/partitioner.o $(SHARED)/subgraph_generator.o $(SHARED)/gpu_kernels.o $(SHARED)/subway_utilities.o $(SHARED)/test.o  
 
-all: make1 make2 make3 bfs-sync cc-sync sssp-sync sswp-sync bfs-async cc-async sssp-async sswp-async
+all: make1 make2 make3 bfs-sync cc-sync sssp-sync ssnp-sync sswp-sync bfs-async cc-async sssp-async ssnp-async sswp-async
 
 make1:
 	make -C $(SHARED)
@@ -32,6 +32,9 @@ cc-sync: $(SUBWAY)/cc-sync.o $(DEP)
 sssp-sync: $(SUBWAY)/sssp-sync.o $(DEP)
 	$(NC) $(SUBWAY)/sssp-sync.o $(DEP) -o sssp-sync $(CFLAGS) $(NFLAGS)
 
+ssnp-sync: $(SUBWAY)/ssnp-sync.o $(DEP)
+	$(NC) $(SUBWAY)/ssnp-sync.o $(DEP) -o ssnp-sync $(CFLAGS) $(NFLAGS)
+
 sswp-sync: $(SUBWAY)/sswp-sync.o $(DEP)
 	$(NC) $(SUBWAY)/sswp-sync.o $(DEP) -o sswp-sync $(CFLAGS) $(NFLAGS)
 	
@@ -44,6 +47,9 @@ cc-async: $(SUBWAY)/cc-async.o $(DEP)
 sssp-async: $(SUBWAY)/sssp-async.o $(DEP)
 	$(NC) $(SUBWAY)/sssp-async.o $(DEP) -o sssp-async $(CFLAGS) $(NFLAGS)	
 
+ssnp-async: $(SUBWAY)/ssnp-async.o $(DEP)
+	$(NC) $(SUBWAY)/ssnp-async.o $(DEP) -o ssnp-async $(CFLAGS) $(NFLAGS)	
+
 sswp-async: $(SUBWAY)/sswp-async.o $(DEP)
 	$(NC) $(SUBWAY)/sswp-async.o $(DEP) -o sswp-async $(CFLAGS) $(NFLAGS)	
 	
@@ -51,4 +57,4 @@ clean:
 	make -C $(SHARED) clean
 	make -C $(SUBWAY) clean
 	make -C $(TOOLS) clean
-	rm -f bfs-sync cc-sync sssp-sync sswp-sync bfs-async cc-async sssp-async sswp-async
+	rm -f bfs-sync cc-sync sssp-sync ssnp-sync sswp-sync bfs-async cc-async sssp-async ssnp-async sswp-async
