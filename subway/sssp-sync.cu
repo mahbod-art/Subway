@@ -54,7 +54,7 @@ int main(int argc, char** argv)
 	
 	uint itr = 0;
 	uint node_processed = 0;
-	//uint edged_processed = 0;
+	uint edged_processed = 0;
 		
 	while (subgraph.numActiveNodes>0)
 	{
@@ -84,7 +84,7 @@ int main(int argc, char** argv)
 													//d_finished,
 													graph.d_label1,
 													graph.d_label2);
-			cout << "Number of the Edge Processed: " << partitioner.partitionEdgeSize[i] << endl;
+			edged_processed = edged_processed + partitioner.partitionEdgeSize[i];
 
 
 			cudaDeviceSynchronize();
@@ -94,6 +94,7 @@ int main(int argc, char** argv)
 			
 	}	
 	cout << "Numberof the Node Processed: " << node_processed << endl;
+	cout << "Number of the Edge Processed: " << edged_processed << endl;
 	
 	float runtime = timer.Finish();
 	cout << "Processing finished in " << runtime << " (ms).\n";
