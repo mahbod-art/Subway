@@ -115,7 +115,8 @@ void SubgraphGenerator<E>::generate(Graph<E> &graph, Subgraph<E> &subgraph)
 	thrust::device_ptr<unsigned int> ptr_degrees_prefixsum(d_prefixSumDegrees);
 
 	//subgraph.numActiveNodes = thrust::reduce(ptr_degrees, ptr_degrees_prefixsum + graph.num_nodes);
-	cout << "Number of Active Edges = " << ptr_degrees << endl;
+	cout << "Number of Active Edges1 = " << ptr_degrees << endl;
+	cout << "Number of Active Edges2 = " << ptr_degrees_prefixsum << endl;
 	
 	thrust::exclusive_scan(ptr_degrees, ptr_degrees + graph.num_nodes, ptr_degrees_prefixsum);
 	
