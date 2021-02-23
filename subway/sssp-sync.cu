@@ -84,7 +84,7 @@ int main(int argc, char** argv)
 													//d_finished,
 													graph.d_label1,
 													graph.d_label2);
-			cout << "Number of the Edge Processed: " << graph.d_label1 << endl;
+			cout << "Number of the Edge Processed: " << subgraph.d_activeEdgeList << endl;
 
 
 			cudaDeviceSynchronize();
