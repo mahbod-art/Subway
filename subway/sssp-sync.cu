@@ -56,6 +56,7 @@ int main(int argc, char** argv)
 		
 	while (subgraph.numActiveNodes>0)
 	{
+		cout << "Number of active nodes in " << itr << "th iteration is: " << subgraph.numActiveNodes << endl;
 		itr++;
 		
 		partitioner.partition(subgraph, subgraph.numActiveNodes);
