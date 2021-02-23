@@ -84,7 +84,7 @@ int main(int argc, char** argv)
 													//d_finished,
 													graph.d_label1,
 													graph.d_label2);
-			cout << "Number of the Edge Processed: " << partitioner.partitionEdgeSize << endl;
+			cout << "Number of the Edge Processed: " << partitioner.partitionEdgeSize[i] << endl;
 
 
 			cudaDeviceSynchronize();
