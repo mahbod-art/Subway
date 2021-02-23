@@ -103,8 +103,6 @@ void SubgraphGenerator<E>::generate(Graph<E> &graph, Subgraph<E> &subgraph)
 	thrust::device_ptr<unsigned int> ptr_labeling_prefixsum(d_prefixLabeling);
 	
 	subgraph.numActiveNodes = thrust::reduce(ptr_labeling, ptr_labeling + graph.num_nodes);
-	cout << "Number of Active Edges = " << ptr_labeling << endl;
-
 	//cout << "Number of Active Nodes = " << subgraph.numActiveNodes << endl;
 				
 	thrust::exclusive_scan(ptr_labeling, ptr_labeling + graph.num_nodes, ptr_labeling_prefixsum);
