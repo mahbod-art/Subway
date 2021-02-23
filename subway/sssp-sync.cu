@@ -59,6 +59,7 @@ int main(int argc, char** argv)
 	while (subgraph.numActiveNodes>0)
 	{
 		//cout << "Number of active nodes in " << itr << "th iteration is: " << subgraph.numActiveNodes << endl;
+		node_processed = node_processed + subgraph.numActiveNodes; 
 		itr++;
 		
 		partitioner.partition(subgraph, subgraph.numActiveNodes);
@@ -86,7 +87,6 @@ int main(int argc, char** argv)
 			cudaDeviceSynchronize();
 			gpuErrorcheck( cudaPeekAtLastError() );	
 		}
-		node_processed = node_processed + subgraph.numActiveNodes; 
 		subgen.generate(graph, subgraph);
 			
 	}	
