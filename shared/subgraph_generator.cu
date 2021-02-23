@@ -104,6 +104,7 @@ void SubgraphGenerator<E>::generate(Graph<E> &graph, Subgraph<E> &subgraph)
 	
 	subgraph.numActiveNodes = thrust::reduce(ptr_labeling, ptr_labeling + graph.num_nodes);
 	//cout << "Number of Active Nodes = " << subgraph.numActiveNodes << endl;
+	cout << "Number of Active Nodes = " << graph.num_nodes << endl;
 				
 	thrust::exclusive_scan(ptr_labeling, ptr_labeling + graph.num_nodes, ptr_labeling_prefixsum);
 	
