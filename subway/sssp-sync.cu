@@ -61,7 +61,7 @@ int main(int argc, char** argv)
 		//cout << "Number of active nodes in " << itr << "th iteration is: " << subgraph.numActiveNodes << endl;
 		node_processed = node_processed + subgraph.numActiveNodes; 
 		//edged_processed = edged_processed + subgraph.d_activeEdgeList; 
-		cout << "Number of the Edge Processed: " << subgraph.activeEdgeList.size() << endl;
+		cout << "Number of the Edge Processed: " << subgraph.num_edges << endl;
 		itr++;
 		
 		partitioner.partition(subgraph, subgraph.numActiveNodes);
