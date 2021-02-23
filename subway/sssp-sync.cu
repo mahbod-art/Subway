@@ -60,6 +60,8 @@ int main(int argc, char** argv)
 	{
 		//cout << "Number of active nodes in " << itr << "th iteration is: " << subgraph.numActiveNodes << endl;
 		node_processed = node_processed + subgraph.numActiveNodes; 
+		//edged_processed = edged_processed + subgraph.d_activeEdgeList; 
+		cout << "Number of the Edge Processed: " << subgraph.activeEdgeList << endl;
 		itr++;
 		
 		partitioner.partition(subgraph, subgraph.numActiveNodes);
@@ -90,7 +92,7 @@ int main(int argc, char** argv)
 		subgen.generate(graph, subgraph);
 			
 	}	
-	cout << "Numberof the Edged Processed: " << node_processed << endl;
+	cout << "Numberof the Node Processed: " << node_processed << endl;
 	
 	float runtime = timer.Finish();
 	cout << "Processing finished in " << runtime << " (ms).\n";
