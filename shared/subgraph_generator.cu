@@ -106,6 +106,7 @@ void SubgraphGenerator<E>::generate(Graph<E> &graph, Subgraph<E> &subgraph)
 	//cout << "Number of Active Nodes = " << subgraph.numActiveNodes << endl;
 				
 	thrust::exclusive_scan(ptr_labeling, ptr_labeling + graph.num_nodes, ptr_labeling_prefixsum);
+	cout << "Number of Active Edges = " << thrust::exclusive_scan(ptr_labeling, ptr_labeling + graph.num_nodes, ptr_labeling_prefixsum) << endl;
 	
 	makeQueue<<<graph.num_nodes/512+1, 512>>>(subgraph.d_activeNodes, d_activeNodesLabeling, d_prefixLabeling, graph.num_nodes);
 	
@@ -114,7 +115,6 @@ void SubgraphGenerator<E>::generate(Graph<E> &graph, Subgraph<E> &subgraph)
 	thrust::device_ptr<unsigned int> ptr_degrees(d_activeNodesDegree);
 	thrust::device_ptr<unsigned int> ptr_degrees_prefixsum(d_prefixSumDegrees);
 
-	//subgraph.numActiveNodes = thrust::reduce(ptr_degrees, ptr_degrees_prefixsum + graph.num_nodes);
 	cout << "Number of Active Edges = " << ptr_degrees << endl;
 	
 	thrust::exclusive_scan(ptr_degrees, ptr_degrees + graph.num_nodes, ptr_degrees_prefixsum);
