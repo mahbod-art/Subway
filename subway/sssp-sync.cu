@@ -53,12 +53,12 @@ int main(int argc, char** argv)
 	timer.Start();
 	
 	uint itr = 0;
+	uint node_processed = 0;
 	uint edged_processed = 0;
 		
 	while (subgraph.numActiveNodes>0)
 	{
 		//cout << "Number of active nodes in " << itr << "th iteration is: " << subgraph.numActiveNodes << endl;
-		edged_processed = edged_processed + subgraph.numActiveNodes; 
 		itr++;
 		
 		partitioner.partition(subgraph, subgraph.numActiveNodes);
@@ -86,11 +86,11 @@ int main(int argc, char** argv)
 			cudaDeviceSynchronize();
 			gpuErrorcheck( cudaPeekAtLastError() );	
 		}
-		
+		node_processed = node_processed + subgraph.numActiveNodes; 
 		subgen.generate(graph, subgraph);
 			
 	}	
-	cout << "Numberof the Edged Processed: " << edged_processed << endl;
+	cout << "Numberof the Edged Processed: " << node_processed << endl;
 	
 	float runtime = timer.Finish();
 	cout << "Processing finished in " << runtime << " (ms).\n";
