@@ -54,7 +54,7 @@ int main(int argc, char** argv)
 	
 	uint itr = 0;
 	uint node_processed = 0;
-	uint edged_processed = 0;
+	//uint edged_processed = 0;
 		
 	while (subgraph.numActiveNodes>0)
 	{
