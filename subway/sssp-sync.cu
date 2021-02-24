@@ -58,7 +58,7 @@ int main(int argc, char** argv)
 		
 	while (subgraph.numActiveNodes>0)
 	{
-		//cout << "Number of active nodes in " << itr << "th iteration is: " << subgraph.numActiveNodes << endl;
+		cout << "Numberof the Node Processed1: " << subgraph.numActiveNodes << endl;
 		node_processed = node_processed + subgraph.numActiveNodes; 
 		//edged_processed = edged_processed + subgraph.d_activeEdgeList; 
 		itr++;
@@ -85,7 +85,7 @@ int main(int argc, char** argv)
 													graph.d_label1,
 													graph.d_label2);
 			edged_processed = edged_processed + partitioner.partitionEdgeSize[i];
-			cout << "Numberof the Node Processed1: " << partitioner.partitionNodeSize[i] << endl;
+			//cout << "Numberof the Node Processed1: " << partitioner.partitionNodeSize[i] << endl;
 			cout << "Numberof the Node Processed2: " << subgraph.numActiveNodes << endl;
 
 
