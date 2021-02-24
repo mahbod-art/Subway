@@ -85,6 +85,8 @@ int main(int argc, char** argv)
 													graph.d_label1,
 													graph.d_label2);
 			edged_processed = edged_processed + partitioner.partitionEdgeSize[i];
+			cout << "Numberof the Node Processed1: " << partitioner.partitionNodeSize[i] << endl;
+			cout << "Numberof the Node Processed2: " << subgraph.numActiveNodes << endl;
 
 
 			cudaDeviceSynchronize();
